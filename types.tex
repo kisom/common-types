@@ -1,0 +1,43 @@
+\documentclass[10pt,twocolumn]{article}
+\usepackage{amsmath}
+\usepackage[margin=0.75in]{geometry}
+\title{Common Type Signatures}
+\author{K. Isom\\kyle@metacircular.net}
+
+\begin{document}
+\maketitle
+
+\section{Applicative and Functors}
+
+\begin{math}
+\verb|(<$>)| :: \textbf{Functor}\;f \Rightarrow (\textrm{a} \to \textrm{b}) \to f\;\textrm{a} \to f\;\textrm{b}
+\end{math}
+\\
+\begin{math}
+\verb|(<*>)| :: \textbf{Applicative}\;f \Rightarrow f (\textrm{a} \to \textrm{b}) -> f\;\textrm{a} \to f\;\textrm{b}
+\end{math}
+
+\section{Monads}
+\begin{math}
+\verb|(>>=)| :: \textbf{Monad}\; m \Rightarrow m\;\textrm{a} \to (\textrm{a} \to m\; \textrm{b}) \to m\; \textrm{b}
+\end{math}
+\\
+\begin{math}
+\verb|(>>)| :: \textbf{Monad} \;m \Rightarrow m \;\textrm{a} \to m \;\textrm{b} \to m \;\textrm{b}
+\end{math}
+\\
+\begin{math}
+\verb|liftM| :: \textbf{Monad}\; m \Rightarrow (\textrm{a1} \to \;\textrm{r}) -> m \;\textrm{a1} \to m \;\textrm{r}
+\end{math}
+\\
+\begin{math}
+\verb|mapM| :: (\textbf{Monad}\; m,\;\textbf{Traversable}\; t) \Rightarrow\\
+\verb|      |(\textrm{a} \to m \;\textrm{b}) \to t \;\textrm{a} \to m\;(t \;\textrm{b})
+\end{math}
+\\
+\begin{math}
+\verb|(>=>)| :: \textbf{Monad}\; m \Rightarrow\\
+\verb|       |(\textrm{a} \to m \;\;\textrm{b}) \to (\;\textrm{b} \to m \;\;\textrm{c}) \to \;\textrm{a} \to m \;\;\textrm{c}
+\end{math}
+
+\end{document}
